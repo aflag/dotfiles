@@ -1,12 +1,18 @@
 #!/bin/sh
+
 set +x
 
-SCRIPT_DIR=$(dirname $0)
+cd $(dirname $0)
+SCRIPT_DIR=$(pwd)
 BACKUP_DIR="$SCRIPT_DIR/bkp"
-for f in ".bash_logout .bashrc .gvimrc .profile .vimrc"; do
-    if [ -f "$HOME/$f" -a "$(readlink "$HOME/$f")" != "$SCRIPT_DIR/$f"]; then
+for f in .bash_logout .bashrc .gvimrc .profile .vimrc .vim; do
+    if [ -e "$HOME/$f" -a "$(readlink "$HOME/$f")" != "$SCRIPT_DIR/$f" ]; then
         mkdir -p "$SCRIPT_DIR/bkp"
         mv "$HOME/$f" "$SCRIPT_DIR/bkp"
     fi
     ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
 done
+
+if [ ! -d "$HOME/.rvm" ]; then
+    curl -L https://get.rvm.io | bash -s stable
+fi
