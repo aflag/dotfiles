@@ -1,0 +1,12 @@
+#!/bin/sh
+set +x
+
+SCRIPT_DIR=$(dirname $0)
+BACKUP_DIR="$SCRIPT_DIR/bkp"
+for f in ".bash_logout .bashrc .gvimrc .profile .vimrc"; do
+    if [ -f "$HOME/$f" -a "$(readlink "$HOME/$f")" != "$SCRIPT_DIR/$f"]; then
+        mkdir -p "$SCRIPT_DIR/bkp"
+        mv "$HOME/$f" "$SCRIPT_DIR/bkp"
+    fi
+    ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
+done
