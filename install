@@ -8,14 +8,14 @@ BACKUP_DIR="$SCRIPT_DIR/bkp"
 for f in .bash_logout .bashrc .gvimrc .profile .vimrc .vim .git-completion.bash; do
     if [ -e "$HOME/$f" -a "$(readlink "$HOME/$f")" != "$SCRIPT_DIR/$f" ]; then
         if [ "$f" = ".vim" ]; then
-            cp "$HOME/$f/.netrwhist" /tmp
+            cp "$HOME/$f/.netrwhist" /tmp/
         fi
         mkdir -p "$SCRIPT_DIR/bkp"
-        mv "$HOME/$f" "$SCRIPT_DIR/bkp"
+        mv "$HOME/$f" "$SCRIPT_DIR/bkp/"
     fi
     ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
     if [ "$f" = ".vim" ]; then
-        cp /tmp "$HOME/$f/.netrwhist"
+        cp /tmp/.netrwhist "$HOME/$f/"
     fi
 done
 
