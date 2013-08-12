@@ -4,6 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 call pathogen#infect()
 call vundle#rc()
 
+Bundle 'nvie/vim-flake8'
 Bundle 'gmarik/vundle'
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-ruby/vim-ruby'
