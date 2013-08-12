@@ -7,10 +7,16 @@ SCRIPT_DIR=$(pwd)
 BACKUP_DIR="$SCRIPT_DIR/bkp"
 for f in .bash_logout .bashrc .gvimrc .profile .vimrc .vim; do
     if [ -e "$HOME/$f" -a "$(readlink "$HOME/$f")" != "$SCRIPT_DIR/$f" ]; then
+        if [ "$f" = ".vim" ]; then
+            cp "$HOME/$f/.netrwhist" /tmp
+        fi
         mkdir -p "$SCRIPT_DIR/bkp"
         mv "$HOME/$f" "$SCRIPT_DIR/bkp"
     fi
     ln -sf "$SCRIPT_DIR/$f" "$HOME/$f"
+    if [ "$f" = ".vim" ]; then
+        cp /tmp "$HOME/$f/.netrwhist"
+    fi
 done
 
 if [ ! -d "$HOME/.rvm" ]; then

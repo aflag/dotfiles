@@ -81,18 +81,9 @@ autocmd BufRead,BufNewFile Gemfile set filetype=Gemfile
 "                                    maps                                      "
 "                                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"I like to move down and up on the other window I'm not currently editing
-nnoremap <f6> <c-w>w<c-y><c-w>w
-nnoremap <f7> <c-w>w<c-e><c-w>w
+nmap <c-y> :NERDTreeToggle<cr>
+imap <c-y> <esc>:NERDTreeToggle<cr>
 
-"This is something I need to do in gvim because my window manager don't care
-"about its hints (nor should it!)
-map <F4> :let &lines=&lines-1
-map <S-F4> :let &lines=&lines+1
+nmap <c-\> :FufCoverageFile<cr>
 
-"tabbing through buffers is nice sometimes
-map <C-TAB> :bn<CR>
-map <c-s-tab> :bp<cr>
-
-nmap <m-t> :NERDTreeToggle<cr>
-imap <m-t> <esc>:NERDTreeToggle<cr>
+highlight PmenuSel ctermfg=1
