@@ -36,10 +36,7 @@ set ruler
 set showcmd
 set number
 
-set wildignore+=*.class
-set wildignore+=.git
-
-let fuzzy_ignore='*.class,*.o,*.jar,*.war,*.pyc,*.hi,*ho,*.aux,*.toc,*.gz,*.bz2,*.zip,*.tar,*.png,*.gif,*.eps'
+set wildignore+=*.class,.git,*.pyc,*.o,*.war,*.gz,*.bz2,*.eps,*.gif,*.jpg,*.png,*.zip,*.hi,*.aux,*.toc,*.jar,*.svg
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
