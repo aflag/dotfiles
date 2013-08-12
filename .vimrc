@@ -1,26 +1,16 @@
-".vimrc
+set nocompatible
 
-"THIS IS A CONFIGURATION FILE -- IT'S FOR CONFIGURATION AND CONFIGURATION _ONLY_
-"If you use this file not for configuration, then you're using it WRONG!
-"This is configuration file for configuring things like VIM. It MAY configure
-"other things, BUT IT WON'T do anything besides configurating, for it's
-"configuration file!
-
-"This file is in public domain.
-
-"If anyone cares, this was written by Rafael Almeida <almeidaraf@gmail.com>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                                                                              "
-"                                  settings                                    "
-"                                                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/vundle/
 call pathogen#infect()
 call vundle#rc()
 
+Bundle 'gmarik/vundle'
+Bundle 'kevinw/pyflakes-vim'
+Bundle 'vim-ruby/vim-ruby'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'lunaru/vim-less'
+Bundle 'wlangstroth/vim-racket'
+Bundle 'kchmck/vim-coffee-script'
 
 syntax on
 filetype plugin on     " enables filetype specific plugins
