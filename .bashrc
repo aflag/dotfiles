@@ -10,7 +10,7 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedup
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -102,22 +102,37 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-  # First try to load from a user install
-  source "$HOME/.rvm/scripts/rvm"
+    # First try to load from a user install
+    source "$HOME/.rvm/scripts/rvm"
 elif [[ -s "/usr/local/rvm/scripts/rvm" ]] ; then
-  # Then try to load from a root install
-  source "/usr/local/rvm/scripts/rvm"
+    # Then try to load from a root install
+    source "/usr/local/rvm/scripts/rvm"
 fi
 
 b() {
   bundle exec $@
 }
 
+if [ "$(uname)" = "Darwin" ]; then
+    alias ls='ls -G'
+fi
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Projects
+mkdir -p "$WORKON_HOME" "$PROJECT_HOME"
+source ~/.git-completion.bash
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# @work
+if [ "$(hostname)" = "mac220990.local" ]; then
+    export PATH=$PATH:/usr/local/share/npm/bin
+fi
