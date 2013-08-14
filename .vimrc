@@ -5,12 +5,15 @@ call pathogen#infect()
 call vundle#rc()
 
 Bundle 'nvie/vim-flake8'
+let g:flake8_max_line_length=1000
+autocmd BufWritePost *.py call Flake8()
 Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'lunaru/vim-less'
 Bundle 'wlangstroth/vim-racket'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'elzr/vim-json'
 
 syntax on
 filetype plugin on     " enables filetype specific plugins
@@ -47,11 +50,13 @@ set wildignore+=*.class,.git,*.pyc,*.o,*.war,*.gz,*.bz2,*.eps,*.gif,*.jpg,*.png,
 au BufEnter *.cpy,*.py  set et   sts=4 sw=4 filetype=python ts=4
 au BufEnter *.rb        set et   sts=2 sw=2 filetype=ruby ts=2
 au BufEnter *.java      set et   sts=4 sw=4 filetype=java ts=4 smartindent
-au BufEnter *.coffee     set et   sts=2 sw=2 ts=2
-au BufEnter *.erb        set et   sts=2 sw=2 ts=2
-au BufEnter *.scss       set et   sts=2 sw=2 ts=2
-au BufEnter *.rkt        set et   sts=2 sw=2 ts=2
-autocmd BufRead,BufNewFile Gemfile set filetype=Gemfile
+au BufEnter *.coffee    set et   sts=2 sw=2 ts=2
+au BufEnter *.erb       set et   sts=2 sw=2 ts=2
+au BufEnter *.scss      set et   sts=2 sw=2 ts=2
+au BufEnter *.rkt       set et   sts=2 sw=2 ts=2
+au BufEnter *.rkt       set et   sts=2 sw=2 ts=2
+au BufEnter Gemfile     set filetype=Gemfile
+au BufEnter *.json      set filetype=json
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
