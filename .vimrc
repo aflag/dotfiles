@@ -4,9 +4,11 @@ set rtp+=~/.vim/bundle/vundle/
 call pathogen#infect()
 call vundle#rc()
 
-Bundle 'nvie/vim-flake8'
-let g:flake8_max_line_length=1000
-autocmd BufWritePost *.py call Flake8()
+
+Bundle 'scrooloose/syntastic.git'
+"let g:syntastic_python_flake8_args="--ignore=E501"
+"let g:syntastic_python_pylint_args="-d C0301"
+
 Bundle 'gmarik/vundle'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'cakebaker/scss-syntax.vim'
